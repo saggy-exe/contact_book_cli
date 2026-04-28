@@ -1,7 +1,7 @@
 # 📇 Contact Book CLI (Python)
 
 A clean, modular, command-line Contact Book application built with Python.
-This project demonstrates solid **OOP design**, **file persistence**, and **input validation**, making it a great showcase for foundational backend skills.
+This project demonstrates solid **OOP design**, **SQL database operations**, and **input validation**, making it a great showcase for foundational backend skills.
 
 ---
 
@@ -27,12 +27,12 @@ This project demonstrates solid **OOP design**, **file persistence**, and **inpu
 
 * 💾 **Persistent Storage**
 
-  * Contacts saved in `contacts.json`
+  * Contacts saved in `contacts.db`
   * Automatically loaded on startup
 
 * ⚠️ **Error Handling**
 
-  * Gracefully handles missing files (`FileNotFoundError`)
+  * Gracefully handles missing data (`sqlite3.IntegrityError`)
 
 ---
 
@@ -44,8 +44,7 @@ contact-book/
 ├── contact.py        # Contact model
 ├── contact_book.py   # Core logic (ContactBook class)
 ├── main.py           # CLI interface
-├── contacts.json     # Data storage (auto-created)
-├── requirements.txt  # Dependencies (minimal)
+├── contacts.db       # Data storage (auto-created)
 └── README.md
 ```
 
@@ -64,7 +63,7 @@ Represents a single contact with:
 
 Includes:
 
-* `to_dict()` for JSON serialization
+* `__str__` for DB serialization
 
 ---
 
@@ -73,7 +72,7 @@ Includes:
 Acts as the brain of the application:
 
 * Manages in-memory contact list
-* Handles file I/O (load/save)
+* Handles database management using SQLite
 * Provides all core operations:
 
   * add
@@ -98,37 +97,7 @@ git clone https://github.com/your-username/contact-book.git
 cd contact-book
 ```
 
-### 2. Create virtual environment
-
-```bash
-python -m venv venv
-```
-
-### 3. Activate virtual environment
-
-**Windows:**
-
-```bash
-venv\Scripts\activate
-```
-
-**Mac/Linux:**
-
-```bash
-source venv/bin/activate
-```
-
-### 4. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-> Note: This project uses only Python standard library, so requirements may be empty.
-
----
-
-## ▶️ Running the Application
+### 2. ▶️ Run the Application
 
 ```bash
 python main.py
@@ -149,21 +118,6 @@ python main.py
 
 ---
 
-## 📦 Example `contacts.json`
-
-```json
-[
-    {
-        "name": "Aarav Sharma",
-        "phone": "9876543210",
-        "email": "aarav.sharma@example.com",
-        "added_on": "2026-04-20 10:15:30"
-    }
-]
-```
-
----
-
 ## 🧪 Validation Rules
 
 ### Phone
@@ -178,16 +132,6 @@ python main.py
 * No consecutive dots
 * Proper extension (e.g. `.com`, `.in`)
 
----
-
-## 🌱 Future Improvements
-
-* ✏️ Update contact feature
-* 🚫 Prevent duplicate entries
-* 📤 Export contacts to CSV
-* 🧾 Pretty tables using `tabulate`
-* 🧪 Unit tests with `pytest`
-* 🔐 Data encryption for sensitive info
 
 ---
 
@@ -196,16 +140,10 @@ python main.py
 This project demonstrates:
 
 * Object-Oriented Programming (OOP)
-* File handling with JSON
+* Database operations using SQLite
 * Input validation without regex
 * Clean code structure and modularity
 * CLI application design
-
----
-
-## 📜 License
-
-This project is open-source and available under the MIT License.
 
 ---
 
