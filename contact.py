@@ -6,17 +6,12 @@ class Contact:
         self.phone = phone
         self.email = email
 
-        if added_on:
-            self.added_on = added_on
-        else:
-            current = datetime.datetime.now()
-            self.added_on = datetime.datetime.strftime(current, "%Y-%m-%d %H:%M:%S")
+        self.added_on = added_on or datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    def to_dict(self):
-        return {
-            "name": self.name,
-            "phone": self.phone,
-            "email": self.email,
-            "added_on": self.added_on
-        }
-    
+    def __str__(self):
+        return (
+            f"Name: {self.name}\n"
+            f"Phone: {self.phone}\n"
+            f"Email: {self.email}\n"
+            f"Added on: {self.added_on}"
+        )

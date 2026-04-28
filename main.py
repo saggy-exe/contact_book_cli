@@ -31,8 +31,8 @@ def main():
             book.delete_contact(name)
 
         elif choice == "5":
-            book.save_contacts()
-            print("Contacts saved. Goodbye!")
+            book.close()
+            print("Goodbye!")
             break
 
         else:
